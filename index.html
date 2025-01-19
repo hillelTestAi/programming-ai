@@ -3,31 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chat Interface</title>
+    <title>AI Chat</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Ask the AI!</h1>
-    <textarea id="prompt" rows="4" cols="50" placeholder="Ask me anything..."></textarea><br>
-    <button onclick="sendRequest()">Submit</button>
-    <p id="response"></p>
 
-    <script>
-        async function sendRequest() {
-            const prompt = document.getElementById("prompt").value;
-            const responseElement = document.getElementById("response");
+    <div class="chat-container">
+        <div id="chatbox" class="chatbox"></div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type a message..." class="user-input">
+            <button onclick="sendMessage()" class="send-button">Send</button>
+        </div>
+    </div>
 
-            // כאן צריך לשים את ה-URL של ה-Space שלך
-            const response = await fetch("https://huggingface.co/spaces/hillel12312123/my-programming-ai", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ prompt: prompt })
-            });
-
-            const data = await response.json();
-            responseElement.textContent = "AI says: " + data.response;
-        }
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
