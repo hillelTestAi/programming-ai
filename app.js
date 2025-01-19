@@ -4,12 +4,13 @@ function sendMessage() {
         addMessage(userMessage, 'user');
         document.getElementById("user-input").value = ''; // Clear input field
 
-        fetch(`http://195.179.229.119/gpt/api.php?prompt=${encodeURIComponent(userMessage)}&api_key=56e5a497a2286ae13c100e1d0b84c58b&model=gpt-4`)
+        fetch(`https://195.179.229.119/gpt/api.php?prompt=${encodeURIComponent(userMessage)}&api_key=56e5a497a2286ae13c100e1d0b84c58b&model=gpt-4`)
             .then(response => response.json())
             .then(data => {
                 addMessage(data.response, 'bot');
             })
             .catch(error => console.error('Error:', error));
+
     }
 }
 
